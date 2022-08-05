@@ -5,49 +5,52 @@
 #include<unistd.h>
 void reciver();
 char frames[1024];
+
 int main()
 {
-    char buffer[256],temp[10];
+    char buffer[256],temp[20];
     int n;
-    printf("enter the no of frames to be sent"); // takes users input for no of frames to be sent
+
+    printf("enter the number of nodes you want to send %d",&n);
     scanf("%d",&n);
 
-    for(int i=0;i<n;i++) // prints the frames and stores in buffer
-    
-    {
-        bzero(buffer,256); //turns buffer to 0s
-        printf("enter the frames at %d",(i+1));
-        scanf("%s",buffer);
-        //buffer of type string
 
-        int len = strlen(buffer);//length of the buffer
-        printf("the length of the frames are %d",len);
-        sprintf(temp,"%d",len); // store len in temp of type int
-        strcat(frames,temp); // concatenate temp to frames
-        strcat(frames,buffer); // concatenate buffer to frames
+    for(int i =0;i<n;i++)
+    {
+        bzero(buffer,256);
+        printf("\nenter the frame %d\n",(i+1));
+        scanf("%s",buffer);
+
+        int len =strlen(buffer);
+
+        sprintf(temp,"%d",len);
+
+        strcat(frames,temp);
+        strcat(frames,buffer);
     }
     reciver();
 }
+
 void reciver()
 {
-    printf("\n the frame recived is %s",frames);
-    //print frames
+    printf("the frames recieved is %s\n",frames);
 
     int frameslen = strlen(frames);
-    printf("\n the length of the frame is %d",frameslen);
-    //prints frames len after strlen
-
     int i = 0;
+    printf("the length of the frames is %d\n",frameslen);
+    printf("the frames are\n");
+
     while(i<frameslen)
     {
-        char leninchar=frames[i++];
-        int len = (int)leninchar- (int)'0'; //converts char to int
+        char leninchar = frames[i++];
+
+        int len = (int)leninchar - (int)'0';
         while(len>0)
         {
             printf("%c",frames[i++]);
             len--;
         }
         printf("\n");
-        //prints char by char
-            }
+    }
+    
 }
