@@ -15,18 +15,24 @@ int main()
  {
     printf("enter the input rate");
     scanf("%d",&inp[i]);
+
     if(inp[i]>cap)
     {
         printf("input rate is greater than bucket size",i+1);
         exit(0);
     }
+
     i++;
+
     printf("enter 1 to continue or 0 to quit");
     scanf("%d",&ch);
-}while(ch);
+
+} while(ch);
+
 nsec=i;
+
 printf("\n second \t received \t sent \t dropped \t remained \n");
-for(i=0;count || i <nsec;i++)
+for(i=0;count || i < nsec;i++)
 {
     printf("%d",i+1);
     printf("\t\t%d\t",inp[i]);
@@ -35,15 +41,19 @@ for(i=0;count || i <nsec;i++)
     {
         if(x>cap)
         {
-            count=cap;
+            
             drop=x-cap;
+            count=cap;
         }
-        else{
-            count = x;
+        else
+        {
+            
             drop=0;
+            count = x;
         }
     }
-    else{
+    else
+    {
         drop=0;
         count=0;
     }
